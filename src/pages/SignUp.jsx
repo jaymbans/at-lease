@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+
+
+// handle authentication
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config';
 
@@ -49,7 +55,7 @@ function SignUp() {
 
       navigate('/')
     } catch (error) {
-      console.log(error)
+      toast.error('Sign up failed. Make sure to enter a valid email and password!');
     }
   }
 
