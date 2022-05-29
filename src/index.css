@@ -62,7 +62,7 @@ button {
 
 .primaryButton {
   cursor: pointer;
-  background: #00cc66;
+  background: #E1AD01;
   border-radius: 1rem;
   padding: 0.85rem 2rem;
   color: #ffffff;
@@ -762,7 +762,7 @@ button {
 }
 
 .formButtonActive {
-  background-color: #00cc66;
+  background-color: #E1AD01;
   color: #ffffff;
 }
 
@@ -819,7 +819,7 @@ button {
 }
 
 .formInputFile::-webkit-file-upload-button {
-  background-color: #00cc66;
+  background-color: #E1AD01;
   border: none;
   color: #ffffff;
   font-weight: 600;

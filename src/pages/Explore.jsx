@@ -8,20 +8,19 @@ function Explore() {
       <header>
         <p className="pageHeader">Explore</p>
       </header>
-
       <main>
         {/* slider component */}
         <p className="exploreCategoryHeading">
           Categories
         </p>
         <div className="exploreCategories">
-          <Link to='/category/rent'>
+          <Link to='/category/seasonal'>
             <img src={rentCategoryImage} alt="rent image" className='exploreCategoryImg' />
-            <p className="exploreCategoryName">Places to Rent</p>
+            <p className="exploreCategoryName">Seasonal SubLeases</p>
           </Link>
-          <Link to='/category/sale'>
+          <Link to='/category/annual'>
             <img src={sellCategoryImage} alt="sell image" className='exploreCategoryImg' />
-            <p className="exploreCategoryName">Places Subleased</p>
+            <p className="exploreCategoryName">Annual Subleases</p>
           </Link>
         </div>
       </main>

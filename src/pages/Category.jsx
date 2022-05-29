@@ -21,7 +21,7 @@ function Category() {
         // Set query
         const q = query(
           listingsRef,
-          where('type', '==', params.categoryName),
+          where('rentType', '==', 'seasonal'),
           orderBy('timestamp', 'desc'),
           limit(10)
         );
@@ -41,7 +41,10 @@ function Category() {
 
         setListings(listings)
         setLoading(false)
-      } catch (error) { toast.error('Could not fetch listings') }
+      } catch (error) {
+        toast.error('Could not fetch listings')
+        console.log(error)
+      }
     };
 
     fetchListings();
@@ -51,7 +54,7 @@ function Category() {
     <div className='category'>
       <header>
         <p className="pageHeader">
-          {params.categoryName === 'rent' ? 'Places for rent' : 'Places for sale'}
+          {params.categoryName === 'seasonal' ? 'Seasonal Places' : 'Annual Places'}
         </p>
       </header>
       {loading ? <Spinner /> : listings && listings.length > 0 ?
