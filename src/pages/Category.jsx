@@ -21,7 +21,7 @@ function Category() {
         // Set query
         const q = query(
           listingsRef,
-          where('rentType', '==', 'seasonal'),
+          where('rentType', '==', params.categoryName),
           orderBy('timestamp', 'desc'),
           limit(10)
         );
