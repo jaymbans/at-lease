@@ -19,6 +19,7 @@ function CreateListing() {
     furnished: false,
     location: '',
     offer: false,
+    parking: false,
     regularPrice: 0,
     discountedPrice: 0,
     images: {},
