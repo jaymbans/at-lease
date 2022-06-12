@@ -9,6 +9,8 @@ import ListingItem from '../components/ListingItem';
 function Category() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchedListing] = useState(null);
+
 
   const params = useParams();
 
@@ -28,6 +30,8 @@ function Category() {
 
         // Execute query
         const querySnap = await getDocs(q);
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchedListing(lastVisible);
 
         const listings = [];
 
@@ -50,6 +54,46 @@ function Category() {
     fetchListings();
   }, [params.categoryName])
 
+  // pagination and load more
+  const fetchMoreListings = async () => {
+    try {
+      // reference listing collection
+      const listingsRef = collection(db, 'listings');
+
+      // Set query
+      const q = query(
+        listingsRef,
+        where('rentType', '==', params.categoryName),
+        orderBy('timestamp', 'desc'),
+        startAfter(lastFetchedListing),
+        limit(10)
+      );
+
+      // Execute query
+      const querySnap = await getDocs(q);
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+      setLastFetchedListing(lastVisible);
+
+      const listings = [];
+
+
+      querySnap.forEach((doc) => {
+        listings.push({
+          id: doc.id,
+          data: doc.data()
+        })
+      })
+
+      setListings((prevState) => {
+        return [...prevState, ...listings]
+      })
+      setLoading(false)
+    } catch (error) {
+      toast.error('Could not fetch listings')
+      console.log(error)
+    }
+  }
+
   return (
     <div className='category'>
       <header>
@@ -66,6 +110,11 @@ function Category() {
               ))}
             </ul>
           </main>
+          <br />
+          <br />
+          {lastFetchedListing && (
+            <p className="loadMore" onClick={fetchMoreListings}>Load More</p>
+          )}
         </> : <p>No current listings for {params.categoryName}</p>}
     </div>
   )
