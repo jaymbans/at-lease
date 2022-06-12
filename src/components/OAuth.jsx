@@ -13,7 +13,7 @@ function OAuth() {
     try {
       // authenticates and signs up with google
       const auth = getAuth();
-      const provider = new GoogleAuthProvider;
+      const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 

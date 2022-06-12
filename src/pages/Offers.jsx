@@ -11,6 +11,7 @@ function Offers() {
   const [loading, setLoading] = useState(true);
   const [lastFetchedListing, setLastFetchedListing] = useState(null);
 
+  // eslint-disable-next-line
   const params = useParams();
 
   useEffect(() => {
