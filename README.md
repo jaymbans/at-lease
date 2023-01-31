@@ -14,4 +14,6 @@ Upon graduating, my friends and I are often looking for opportunities to travel 
 <li>Allow alumni to lease their apartments short-term to a trusted individual</li>
 </ol>
 
+"At Lease(t)" It's an easy solution! 
+
 <a target='_blank' href="https://at-lease.vercel.app/">Demo Here!</a>
